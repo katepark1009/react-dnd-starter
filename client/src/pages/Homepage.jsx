@@ -9,19 +9,23 @@ const Homepage = props => {
 
     const onDrop = ( item, monitor, status ) => {
         const mapping = statuses.find(si => si.status === status)
+        console.log("onDrop -> mapping", mapping)
         setItems(prevState => {
             const newItems = prevState
                 .filter(i => i.id !== item.id)
                 .concat({ ...item, status, icon: mapping.icon})
+            console.log("onDrop -> newItems", newItems)
             return newItems
         })
     }
 
     const moveItem = (dragIndex, hoverIndex) => {
         const item = items[dragIndex]
+        console.log("moveItem -> item", item)
         setItems(prevState => {
             const newItems = prevState.filter((i, idx) => idx !== dragIndex)
             newItems.splice(hoverIndex, 0, item)
+            console.log("moveItem -> newItems", newItems)
             return [ ...newItems ]
         })
     }
