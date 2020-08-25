@@ -9,7 +9,6 @@ const Homepage = props => {
 
     const onDrop = ( item, monitor, status ) => {
         const mapping = statuses.find(si => si.status === status)
-        console.log("onDrop -> mapping", mapping)
         setItems(prevState => {
             const newItems = prevState
                 .filter(i => i.id !== item.id)
@@ -21,13 +20,13 @@ const Homepage = props => {
 
     const moveItem = (dragIndex, hoverIndex) => {
         const item = items[dragIndex]
-        console.log("moveItem -> item", item)
+        console.log("moveItem -> item SELECTED::", item)
         setItems(prevState => {
             const newItems = prevState.filter((i, idx) => idx !== dragIndex)
             newItems.splice(hoverIndex, 0, item)
-            console.log("moveItem -> newItems", newItems)
             return [ ...newItems ]
         })
+        console.log("moveItem -> items ITEMS ARRAY::", items)
     }
     return (
         <div className='row'>
